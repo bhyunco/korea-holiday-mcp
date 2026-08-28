@@ -182,9 +182,15 @@ button.copy:hover {
   opacity: 0.85;
 }
 
-button.copy[data-copied="true"] {
+button.copy[data-state="copied"],
+button.copy[data-state="manual"] {
   background: var(--bg-raised);
   color: var(--accent);
+}
+
+.url-row code::selection {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* ---------- steps ---------- */

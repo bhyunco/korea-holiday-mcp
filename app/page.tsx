@@ -74,10 +74,7 @@ export default async function Home() {
 
         <div className="url-card">
           <div className="label">커넥터 URL</div>
-          <div className="url-row">
-            <code>{mcpUrl}</code>
-            <CopyButton value={mcpUrl} />
-          </div>
+          <CopyButton value={mcpUrl} />
         </div>
       </header>
 
