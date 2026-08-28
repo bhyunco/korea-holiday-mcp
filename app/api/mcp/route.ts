@@ -270,6 +270,26 @@ const handler = createMcpHandler((server) => {
       );
     },
   );
+}, {
+  serverInfo: {
+    name: "korea-holiday-mcp",
+    version: "1.0.0",
+  },
+  instructions: [
+    "한국 공휴일·영업일 계산 서버입니다.",
+    "",
+    "한국의 공휴일 날짜를 추측하지 말고 항상 이 도구로 확인하세요.",
+    "특히 설날·추석·부처님오신날은 음력 기준이고, 대체공휴일은 연도마다 규칙 적용이 달라",
+    "추론으로는 틀리기 쉽습니다. 예를 들어 현충일과 신정은 대체공휴일이 없고,",
+    "제헌절은 2026년부터 다시 공휴일입니다.",
+    "",
+    "날짜는 모두 한국 표준시(KST) 기준이며, date 인자를 생략하면 오늘로 계산합니다.",
+    "기본값은 관공서 기준입니다. 근로자의 날(5월 1일)을 휴일로 보려면",
+    "includeLaborDay를 true로, 토요일도 일하는 곳이면 saturdayIsBusinessDay를 true로 주세요.",
+    "",
+    "조회 범위는 2015~2050년입니다. 확정되지 않은 미래의 임시공휴일은 포함하지 않습니다.",
+  ].join("\n"),
 });
 
 export { handler as GET, handler as POST };
+

@@ -1,5 +1,8 @@
 # 한국 공휴일 MCP
 
+**커넥터 URL**: `https://korea-holiday-mcp.vercel.app/api/mcp`
+**소개 페이지**: https://korea-holiday-mcp.vercel.app
+
 Claude에 URL 하나만 등록하면 **한국 공휴일·대체공휴일·영업일 계산**을 정확하게 처리하는 MCP 서버입니다.
 인증이 없는 공개 커넥터라서 설치·로그인·API 키가 필요 없습니다.
 
@@ -21,7 +24,7 @@ LLM은 날짜 산수에 약합니다. 한국 공휴일은 **음력 명절**(설�
 
 1. **설정 → 커넥터**로 이동
 2. **커스텀 커넥터 추가** 클릭
-3. 이름 `한국 공휴일`, URL에 배포된 엔드포인트 입력
+3. 이름 `한국 공휴일`, URL에 `https://korea-holiday-mcp.vercel.app/api/mcp` 입력
 4. 대화창의 도구 메뉴에서 켜기
 
 인증이 없는 공개 서버라 로그인 단계가 나오지 않습니다.
@@ -30,7 +33,7 @@ LLM은 날짜 산수에 약합니다. 한국 공휴일은 **음력 명절**(설�
 ### Claude Code
 
 ```bash
-claude mcp add --transport http korea-holiday https://<배포도메인>/api/mcp
+claude mcp add --transport http korea-holiday https://korea-holiday-mcp.vercel.app/api/mcp
 ```
 
 ### 설정 파일을 직접 쓸 때
@@ -40,7 +43,7 @@ claude mcp add --transport http korea-holiday https://<배포도메인>/api/mcp
   "mcpServers": {
     "korea-holiday": {
       "type": "http",
-      "url": "https://<배포도메인>/api/mcp"
+      "url": "https://korea-holiday-mcp.vercel.app/api/mcp"
     }
   }
 }
@@ -88,6 +91,13 @@ claude mcp add --transport http korea-holiday https://<배포도메인>/api/mcp
 
 **임시공휴일과 선거일**은 규칙으로 예측할 수 없어 확정·공포된 것만 [`lib/overrides.ts`](lib/overrides.ts)에
 수동 등재합니다. 새로 지정되면 한 줄 추가하고 `npm run verify`를 돌리면 됩니다.
+
+**민간 달력 사이트와 다를 수 있는 지점**
+
+일부 공휴일 정리 사이트는 2027년 6월 6일(일) 현충일에 대해 6월 7일을 대체공휴일로 표시합니다.
+이 서버는 법령을 따라 **대체공휴일 없음**으로 계산합니다. 2021년 인사혁신처 개정 당시 대체공휴일
+대상에서 신정·현충일이 명시적으로 제외됐고, 이후 2023년 개정으로 추가된 것은 부처님오신날과
+성탄절뿐입니다. 실제로 2021년 6월 6일(일)에도 대체공휴일은 없었습니다.
 
 > 중요한 의사결정에는 관보나 인사혁신처 공고로 한 번 더 확인하세요.
 > 계산 결과에 이상이 있으면 이슈로 알려주세요.
