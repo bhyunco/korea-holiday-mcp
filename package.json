@@ -1,0 +1,32 @@
+{
+  "name": "korea-holiday-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "한국 공휴일·영업일 계산 MCP 서버 (Claude 커스텀 커넥터)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx scripts/verify.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "korean-lunar-calendar": "^0.4.0",
+    "mcp-handler": "^2.1.1",
+    "next": "^16.3.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
